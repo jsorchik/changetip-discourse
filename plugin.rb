@@ -1,15 +1,15 @@
-# name: coinbase tip
+# name: changetip
 # about: add a button at the end of every post allowing users to tip the author
 # version: 0.1
 # authors: Coinbase
 
-register_asset 'javascripts/initializers/coinbase-tip.js.es6'
+register_asset 'javascripts/initializers/changetip.js.es6'
 
 after_initialize do
-  load File.expand_path('../controllers/coinbase_controller.rb', __FILE__)
+  load File.expand_path('../controllers/changetip_controller.rb', __FILE__)
 
   Discourse::Application.routes.prepend do
-    get 'coinbase/tip_id' => 'coinbase#tip_id'
+    get 'changetip/tip_id' => 'changetip#tip_id'
   end
 end
 
@@ -19,10 +19,9 @@ register_css <<CSS
   z-index: auto;
 }
 
-.cb-tip-button {
-  margin-right: auto;
-  margin-top: 3px;
-  margin-bottom: 0px;
+.changetip_tipme_button {
+  margin-right: 100px;
+  margin-top: 7px;
   display: inline-block;
   text-align: left;
   z-index: 501;
