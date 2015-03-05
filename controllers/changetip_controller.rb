@@ -12,22 +12,22 @@ class ::ChangetipController < ::ApplicationController
     render json: { tipme_id: 'tipme' }
   end
 
-  def button_ids
-    ids = ::PluginStore.get('changetip', "post_id_#{params[:post_id]}")
+  def button_id
+    id = ::PluginStore.get('changetip', "tipme_id_#{params[:tipme_id]}")
 
-    if ids.nil?
+    if id.nil?
       begin
-        ids = Changetip.find_by_tipme_id(params[:tipme_id])
+        id = Changetip.find_by_tipme_id(params[:tipme_id])
       rescue
         puts 'Error looking up changetip button'
-        return render json: { uid: 'tipme', bid: 'tipme' }
+        return render json: { uid: 'tipme' }
       else
-        if ids['uid'].present?
-          ::PluginStore.set('changetip', "post_id_#{params[:post_id]}", ids)
+        if id['uid'].present?
+          ::PluginStore.set('changetip', "tipme_id_#{params[:tipme_id]}", id)
         end
       end
     end
 
-    render json: { uid: ids['uid'], bid: ids['button_id'] }
+    render json: { uid: id['uid'] }
   end
 end

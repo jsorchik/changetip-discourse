@@ -14,7 +14,7 @@ after_initialize do
 
   Discourse::Application.routes.prepend do
     get 'changetip/tipme_id' => 'changetip#tipme_id'
-    get 'changetip/button_ids' => 'changetip#button_ids'
+    get 'changetip/button_id' => 'changetip#button_id'
   end
 end
 

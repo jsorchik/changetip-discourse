@@ -30,10 +30,10 @@ export default {
           });
         }
 
-        function makeButtonIdAjaxCall(post_id, tipme_id) {
-          return Discourse.ajax("/changetip/button_ids", {
+        function makeButtonIdAjaxCall(tipme_id) {
+          return Discourse.ajax("/changetip/button_id", {
             dataType: 'json',
-            data: { post_id: post_id, tipme_id: tipme_id },
+            data: { tipme_id: tipme_id },
             type: 'GET'
           });
         }
@@ -44,13 +44,15 @@ export default {
           disabled: true
         });
 
+        var url = document.location.origin + post.get('url');
+
         makeUsernameAjaxCall().then(function(res) {
           var tipme_id = res["tipme_id"];
           if (tipme_id !== 'tipme') {
-            makeButtonIdAjaxCall(post.get('id'), tipme_id).then(function(res2) {
+            makeButtonIdAjaxCall(tipme_id).then(function(res2) {
               if (res2["uid"] !== 'tipme') {
                 $('.tip-container-' + post.get('id')).
-                  replaceWith(getButtonCode(res2["uid"], res2["bid"]));
+                  replaceWith(getButtonCode(res2["uid"], url));
                 post.propertyDidChange("post.tip_button");
               }
             });
