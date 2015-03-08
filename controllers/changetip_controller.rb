@@ -13,21 +13,22 @@ class ::ChangetipController < ::ApplicationController
   end
 
   def button_id
-    id = ::PluginStore.get('changetip', "tipme_id_#{params[:tipme_id]}")
+    @id = ::PluginStore.get('changetip', "tipme_id_#{params[:tipme_id]}")
 
-    if id.nil?
-      begin
-        id = Changetip.find_by_tipme_id(params[:tipme_id])
-      rescue
-        puts 'Error looking up changetip button'
-        return render json: { uid: 'tipme' }
-      else
-        if id['uid'].present?
-          ::PluginStore.set('changetip', "tipme_id_#{params[:tipme_id]}", id)
-        end
-      end
+    begin
+      @id ||= Changetip.find_by_tipme_id(params[:tipme_id])
+    rescue
+      puts 'Error looking up changetip button'
+      return render json: { uid: 'tipme' }
     end
 
-    render json: { uid: id['uid'] }
+    set_id if @id['uid'].present?
+    render json: { uid: @id['uid'] }
+  end
+
+  private
+
+  def set_id
+    ::PluginStore.set('changetip', "tipme_id_#{params[:tipme_id]}", @id)
   end
 end
