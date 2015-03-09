@@ -6,9 +6,7 @@ A [Discourse](http://discourse.org) plugin to embed a [ChangeTip tip.me](https:/
 Installation
 ============
 
-* Run `rake plugin:install repo=http://github.com/jsorchik/changetip-discourse` in your discourse directory
-* In development mode, run `rake assets:clean`
-* In production, recompile your assets: `rake assets:precompile`
+[How to install a Discourse Plugin.](https://meta.discourse.org/t/install-a-plugin/19157)
 
 Configuration
 =============
