@@ -1,5 +1,3 @@
-require 'HTTParty'
-
 # interface to ChangeTip tip.me API
 class Changetip
   include HTTParty
