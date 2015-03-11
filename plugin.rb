@@ -13,8 +13,7 @@ after_initialize do
   load File.expand_path('../lib/changetip.rb', __FILE__)
 
   Discourse::Application.routes.prepend do
-    get 'changetip/tipme_id' => 'changetip#tipme_id'
-    get 'changetip/button_id' => 'changetip#button_id'
+    get 'changetip/tip_uid' => 'changetip#tip_uid'
   end
 end
 
