@@ -40,7 +40,7 @@ export default {
                       post.get('post_number') + "/";
 
         makeButtonIdAjaxCall().then(function(res) {
-          if (!res["fail"]) {
+          if (!res["fail"] && !!res["uid"]) {
             $('.tip-container-' + post.get('id')).
               replaceWith(buttonSnippet(res["uid"], context));
           }
