@@ -5,12 +5,6 @@ export default {
 
   initialize: function (container) {
 
-    var widget;
-    var url = 'https://widgets.changetip.com/public/js/widgets.js';
-    $.getScript( url, function() {
-      widget = window.Changetip.widget;
-    });
-
     var PostMenuView = container.lookupFactory("view:post-menu");
 
     PostMenuView.reopen({
@@ -45,14 +39,9 @@ export default {
               replaceWith(buttonSnippet(res["uid"], context));
           }
 
-          var tipmeButton = document.getElementById("changetip_tipme_button");
-          if (tipmeButton) {
-            widget.buildButtonWidget(tipmeButton);
-          }
-
           var tipmeButtons = document.getElementsByClassName("changetip_tipme_button");
           Array.prototype.forEach.call(tipmeButtons, function(tipmeButton) {
-            widget.buildButtonWidget(tipmeButton);
+            window.Changetip.widget.buildButtonWidget(tipmeButton);
           });
         });
 
