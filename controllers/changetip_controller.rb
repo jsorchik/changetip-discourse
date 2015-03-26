@@ -20,7 +20,7 @@ class ::ChangetipController < ::ApplicationController
 
   def tipme_id
     u = User.find_by(id: params[:id])
-    f = UserField.find_by(name: 'ChangeTip Username')
+    f = UserField.find_by(name: 'ChangeTip tip.me URL')
 
     if u.user_fields["#{f.id}"].present?
       name = ERB::Util.html_escape(u.user_fields["#{f.id}"])
