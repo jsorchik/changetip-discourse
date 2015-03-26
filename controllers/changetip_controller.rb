@@ -23,7 +23,9 @@ class ::ChangetipController < ::ApplicationController
     f = UserField.find_by(name: 'ChangeTip Username')
 
     if u.user_fields["#{f.id}"].present?
-      return ERB::Util.html_escape(u.user_fields["#{f.id}"])
+      name = ERB::Util.html_escape(u.user_fields["#{f.id}"])
+      name = name.gsub(%r{.tip.me|(http|https)://}, '') if name =~ /.tip.me/
+      return name
     end
 
     nil
