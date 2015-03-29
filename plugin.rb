@@ -29,7 +29,7 @@ register_css <<CSS
   margin-top: 7px;
   display: inline-block;
   text-align: left;
-  z-index: 501;
+  z-index: 945;
   position: relative;
 }
 
