@@ -24,7 +24,8 @@ class ::ChangetipController < ::ApplicationController
 
     if u.user_fields["#{f.id}"].present?
       name = ERB::Util.html_escape(u.user_fields["#{f.id}"])
-      name = name.gsub(%r{.tip.me|(http|https)://}, '') if name =~ /.tip.me/
+      remove = %r{.tip.me/?|(http|https)://|(www.)?changetip.com/tipme/|/+}
+      name = name.gsub(remove, '') if name =~ /.tip.me|changetip.com|\//
       return name
     end
 
