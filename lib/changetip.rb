@@ -1,7 +1,7 @@
 # interface to ChangeTip tip.me API
 class Changetip
   include HTTParty
-  base_uri 'api.changetip.com'
+  base_uri 'https://api.changetip.com'
   default_params output: 'json'
   format :json
 

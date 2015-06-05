@@ -1,6 +1,6 @@
 # name: changetip
 # about: add a button at the end of every post allowing users to tip the author
-# version: 0.1
+# version: 0.2
 # authors: Josh Sorchik
 # url: https://github.com/jsorchik/changetip-discourse
 
