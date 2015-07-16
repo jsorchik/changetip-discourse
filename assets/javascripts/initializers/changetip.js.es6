@@ -1,13 +1,13 @@
-import { Button } from "discourse/views/post-menu";
+import { Button } from "discourse/components/post-menu";
 
 export default {
   name: "changetip",
 
   initialize: function (container) {
 
-    var PostMenuView = container.lookupFactory("view:post-menu");
+    var PostMenuComponent = container.lookupFactory("component:post-menu");
 
-    PostMenuView.reopen({
+    PostMenuComponent.reopen({
 
       buttonForTip: function (post, buffer) {
 
