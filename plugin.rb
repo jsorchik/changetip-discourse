@@ -6,7 +6,6 @@
 
 gem 'httparty', '0.13.3'
 
-register_asset 'javascripts/changetip.js'
 register_asset 'javascripts/initializers/changetip.js.es6'
 
 after_initialize do

@@ -1,10 +1,13 @@
 import { withPluginApi } from 'discourse/lib/plugin-api';
 import { Button } from "discourse/components/post-menu";
+import loadScript from 'discourse/lib/load-script';
 
 function renderAllButtons() {
-  var tipmeButtons = document.getElementsByClassName("changetip_tipme_button");
-  Array.prototype.forEach.call(tipmeButtons, function(tipmeButton) {
-    window.Changetip.widget.buildButtonWidget(tipmeButton);
+  return loadScript('https://widgets.changetip.com/public/js/widgets.js').then(() => {
+    var tipmeButtons = document.getElementsByClassName("changetip_tipme_button");
+    Array.prototype.forEach.call(tipmeButtons, function(tipmeButton) {
+      window.Changetip.widget.buildButtonWidget(tipmeButton);
+    });
   });
 }
 
@@ -13,7 +16,6 @@ function oldPluginCode(container) {
 
   PostMenuComponent.reopen({
     buttonForTip(post) {
-
       function buttonSnippet(uid, bid) {
         return '<div class="changetip_tipme_button" data-bid=' + bid + ' data-uid=' + uid + '></div>';
       }
